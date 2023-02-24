@@ -1,0 +1,10 @@
+{
+    "dependencies": {
+      "level": "^8.0.0",
+      "protobufjs": "^7.1.2"
+    },
+    "devDependencies": {
+      "jest": "^29.3.1"
+    }
+  }
+  

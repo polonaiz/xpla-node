@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+
+# read block height
+# case when block height < 755000
+xplad_v1.0.0 start --log_level=info --log_format=json --trace --x-crisis-skip-assert-invariants --halt-height 1000
+
+# else
+# xplad_v1.1.0 start --log_level=info --log_format=json --trace --x-crisis-skip-assert-invariants --halt-height 1000
+# xplad_v1.1.0 start --home=/data/xplad-default @755000
