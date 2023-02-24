@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+
+XPLA_CUBE_HOME=/data/lib/xplad/cube_47-5
+mkdir -p ${XPLA_CUBE_HOME}
+
+xplad_v1.2.0 init --chain-id cube_47-5 --home=${XPLA_CUBE_HOME} xpla-cube-0 && \
+    wget -O ${XPLA_CUBE_HOME}/config/genesis.json https://raw.githubusercontent.com/xpladev/testnets/main/cube_47-5/genesis.json && \
+    sed -i -e 's/minimum-gas-prices = \"0axpla\"/minimum-gas-prices = \"850000000000axpla\"/g' ${XPLA_CUBE_HOME}/config/app.toml && \
+    sed -i -e 's/pruning = \"default\"/pruning = \"nothing\"/g' ${XPLA_CUBE_HOME}/config/app.toml && \
+    sed -i -e '/\[api\]/,+3 s/enable = false/enable = true/g' ${XPLA_CUBE_HOME}/config/app.toml && \
+    sed -i -e '/\[api\]/,+6 s/swagger = false/swagger = true/g' ${XPLA_CUBE_HOME}/config/app.toml && \
+    sed -i -e 's/seeds = \"\"/seeds = \"9ddfac28dc6b28601e3039902ee5a8915dc7891f@3.35.54.221:26656\"/g' ${XPLA_CUBE_HOME}/config/config.toml && \
+    sed -i -e 's/max_packet_msg_payload_size = 1024/max_packet_msg_payload_size = 4096/g' ${XPLA_CUBE_HOME}/config/config.toml

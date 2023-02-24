@@ -6,15 +6,18 @@
 			"VARIANT": "ubuntu-22.04"
 		}
 	},
-	"postCreateCommand": "git config --global --add safe.directory ${containerWorkspaceFolder};sudo chown vscode.vscode /var/run/docker.sock",
+	"postCreateCommand": "git config --global --add safe.directory ${containerWorkspaceFolder}; sudo chown vscode.vscode /var/run/docker.sock",
 	"remoteUser": "vscode",
 	"mounts": [
-		"type=bind,source=/var/run/docker.sock,target=/var/run/docker.sock"
+		"type=bind,source=/var/run/docker.sock,target=/var/run/docker.sock",
+		"type=bind,source=/data,target=/data",
+		"type=bind,source=/arch,target=/arch"
 	],
 	"customizations": {
 		"vscode": {
 			"extensions": [
-				"mhutchie.git-graph"
+				"mhutchie.git-graph",
+				"ms-vscode.makefile-tools"
 			]
 		}
 	}

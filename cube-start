@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+
+XPLA_CUBE_HOME=/data/lib/xplad/cube_47-5
+
+# time xplad_v1.2.0 tendermint --home=${XPLA_CUBE_HOME} unsafe-reset-all
+
+# @1 ~ @12700
+# time xplad_v1.0.0 start --home=${XPLA_CUBE_HOME} --log_level=info --trace --x-crisis-skip-assert-invariants
+
+# @12700 ~ @2184000
+# time xplad_v1.1.0-cube start --home=${XPLA_CUBE_HOME} --log_level=info --trace --x-crisis-skip-assert-invariants
+# time tar -c -I 'lz4' -f /arch/lib/xplad/xpla__archive__cube_47-5__data__0002184000.tar.lz4 -C /data/lib/xplad/cube_47-5/data .
+# time tar -tv -I 'lz4' -f /arch/lib/xplad/xpla__archive__cube_47-5__data__0002184000.tar.lz4
+
+# @2184000 ~
+time xplad_v1.2.0 start --home=${XPLA_CUBE_HOME} --log_level=info --trace --x-crisis-skip-assert-invariants
