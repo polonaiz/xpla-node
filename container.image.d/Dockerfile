@@ -1,5 +1,5 @@
 ########
-FROM golang:1.19 as builder
+FROM golang:1.19.8 as builder
 
 RUN git clone https://github.com/xpladev/xpla.git ~/xpla 
 
@@ -48,7 +48,7 @@ RUN cp /go/pkg/mod/github.com/!cosm!wasm/wasmvm@v1.0.0/api/libwasmvm.x86_64.so /
 
 
 ########
-FROM ubuntu:22.10 AS runner
+FROM ubuntu:22.04 AS runner
 
 RUN apt-get update && \
     apt-get install -y tzdata && \
@@ -57,9 +57,6 @@ RUN apt-get update && \
 
 RUN apt-get update && \
     apt-get install -y vim bash-completion wget sysstat dstat net-tools curl tmux jq dnsutils liblz4-tool pv git
-
-RUN curl -fsSL https://deb.nodesource.com/setup_16.x | bash - && \
-    apt-get install -y nodejs
 
 COPY --from=builder /usr/local/bin/xplad_* /usr/local/bin/
 COPY --from=builder /usr/local/lib/libwasmvm.x86_64.so /usr/local/lib/

@@ -9,5 +9,5 @@ xplad_v1.2.0 init --chain-id cube_47-5 --home=${XPLA_CUBE_HOME} xpla-cube-0 && \
     sed -i -e 's/pruning = \"default\"/pruning = \"nothing\"/g' ${XPLA_CUBE_HOME}/config/app.toml && \
     sed -i -e '/\[api\]/,+3 s/enable = false/enable = true/g' ${XPLA_CUBE_HOME}/config/app.toml && \
     sed -i -e '/\[api\]/,+6 s/swagger = false/swagger = true/g' ${XPLA_CUBE_HOME}/config/app.toml && \
-    sed -i -e 's/seeds = \"\"/seeds = \"9ddfac28dc6b28601e3039902ee5a8915dc7891f@3.35.54.221:26656\"/g' ${XPLA_CUBE_HOME}/config/config.toml && \
+    sed -i -e 's/seeds = \"\"/seeds = \"ea7ef4864a9835d9a311ef409936278df3002576@20.80.183.57:26656\"/g' ${XPLA_CUBE_HOME}/config/config.toml && \
     sed -i -e 's/max_packet_msg_payload_size = 1024/max_packet_msg_payload_size = 4096/g' ${XPLA_CUBE_HOME}/config/config.toml
