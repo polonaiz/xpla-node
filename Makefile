@@ -1,5 +1,5 @@
 IMAGE_NAME = xpla-node
-TAG_NAME = 20231127
+TAG_NAME = 20231215
 IMAGE_TAG = ${IMAGE_NAME}:${TAG_NAME}
 CONTAINER_NAME = ${IMAGE_NAME}
 
@@ -15,7 +15,7 @@ start-container:
 		--rm --detach \
 		--name ${CONTAINER_NAME} \
 		--mount type=bind,source=/data/lib/xplad,target=/data/lib/xplad \
-		--mount type=bind,source=/data/lib/xplad,target=/arch/lib/xplad \
+		--mount type=bind,source=/arch/lib/xplad,target=/arch/lib/xplad \
 		--mount type=bind,source=/data/app/xpla-node,target=/data/app/xplad \
 		${IMAGE_TAG} \
 		sleep infinity

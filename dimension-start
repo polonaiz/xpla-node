@@ -2,10 +2,8 @@
 
 XPLA_DIMENSION_HOME=/data/lib/xplad/dimension_37-1
 
-time xplad_v1.2.0 tendermint --home=/data/lib/xplad/dimension_37-1 unsafe-reset-all
-
 # @1 ~ @755000
-# time xplad_v1.0.0 start --home=${XPLA_DIMENSION_HOME} --log_level=info --trace --x-crisis-skip-assert-invariants
+# time xplad_v1.0.0 start --home=${XPLA_DIMENSION_HOME} --log_level=info --trace
 # time xplad_v1.0.0 start --home=${XPLA_DIMENSION_HOME} --log_level=info --trace --x-crisis-skip-assert-invariants --halt-height=10000
 # time xplad_v1.0.0 start --home=${XPLA_DIMENSION_HOME} --log_level=info --trace --x-crisis-skip-assert-invariants --halt-height=100000
 # time tar -c -I 'lz4' -f /arch/lib/xplad/xpla__archive__dimension_37-1__data__0000755000.tar.lz4 -C /data/lib/xplad/data .
@@ -14,15 +12,11 @@ time xplad_v1.2.0 tendermint --home=/data/lib/xplad/dimension_37-1 unsafe-reset-
 
 # @755000 ~ @2459600
 # time xplad_v1.1.0 start --home=${XPLA_DIMENSION_HOME} --log_level=info --trace --x-crisis-skip-assert-invariants
-# time tar -c -I 'lz4' -f /arch/lib/xplad/xpla__archive__dimension_37-1__data__0002459600.tar.lz4 -C /data/lib/xplad/dimension_37-1/data .
-# time tar -x -I 'lz4' -f /arch/lib/xplad/xpla__archive__dimension_37-1__data__0002459600.tar.lz4 -C /data/lib/xplad/dimension_37-1/data
-# time tar -x -I 'lz4' -f /data/arch/xplad/xpla__archive__dimension_37-1__data__0002459600.tar.lz4 -C /data/lib/xplad/dimension_37-1/data
+# time xplad_v1.1.0 start --home=${XPLA_DIMENSION_HOME} --log_level=info --trace
+# time tar -c -v -I 'lz4' -f /arch/lib/xplad/xpla__archive__dimension_37-1__data__0002459600.tar.lz4 -C /data/lib/xplad/dimension_37-1/data .
+# time tar -x -v -I 'lz4' -f /arch/lib/xplad/xpla__archive__dimension_37-1__data__0002459600.tar.lz4 -C /data/lib/xplad/dimension_37-1/data
 
 # @2459600 ~
-# use 1.2 added evm stuff
-# time tar -x -I 'lz4' -f /data/arch/xplad/xpla__archive__dimension_37-1__data__0002459600.tar.lz4 -C /data/lib/xplad/dimension_37-1/data
-# time xplad_v1.2.0 start --home=/data/lib/xplad/dimension_37-1 --log_level=info --trace --x-crisis-skip-assert-invariants
-# time xplad_v1.2.1 start --home=/data/lib/xplad/dimension_37-1 --log_level=info --trace --x-crisis-skip-assert-invariants
-# time xplad_v1.2.1 start --home=/data/lib/xplad/dimension_37-1 --log_level=info --trace
+time xplad_v1.2.3 start --home=/data/lib/xplad/dimension_37-1 --log_level=info --trace
 
 # @4845600
