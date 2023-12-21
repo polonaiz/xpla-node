@@ -15,7 +15,6 @@ start-container:
 		--rm --detach \
 		--name ${CONTAINER_NAME} \
 		--mount type=bind,source=/data/lib/xplad,target=/data/lib/xplad \
-		--mount type=bind,source=/arch/lib/xplad,target=/arch/lib/xplad \
 		--mount type=bind,source=/data/app/xpla-node,target=/data/app/xplad \
 		${IMAGE_TAG} \
 		sleep infinity
