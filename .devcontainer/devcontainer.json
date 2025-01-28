@@ -9,9 +9,7 @@
 	"postCreateCommand": "git config --global --add safe.directory ${containerWorkspaceFolder}; sudo chown vscode.vscode /var/run/docker.sock",
 	"remoteUser": "vscode",
 	"mounts": [
-		"type=bind,source=/var/run/docker.sock,target=/var/run/docker.sock",
-		"type=bind,source=/data,target=/data",
-		"type=bind,source=/arch,target=/arch"
+		"type=bind,source=/var/run/docker.sock,target=/var/run/docker.sock"
 	],
 	"customizations": {
 		"vscode": {
