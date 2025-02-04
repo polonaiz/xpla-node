@@ -1,5 +1,0 @@
-#!/usr/bin/env bash
-
-XPLA_CUBE_HOME=/data/lib/xplad/cube_47-5
-
-time xplad_v1.2.0 tendermint --home=${XPLA_CUBE_HOME} unsafe-reset-all

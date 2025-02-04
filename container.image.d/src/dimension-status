@@ -1,9 +1,0 @@
-#!/usr/bin/env bash
-
-# watch -n10 --color 'xplad_v1.2.3 status --node tcp://localhost:36657 | jq -C'
-while true
-do
-  echo -n "$(date +%Y-%m-%dT%H:%M:%S),"
-  xplad_v1.2.3 status --node tcp://localhost:36657 | jq -r .SyncInfo.latest_block_height
-  sleep 300
-done

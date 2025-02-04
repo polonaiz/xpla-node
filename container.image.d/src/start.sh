@@ -1,8 +1,13 @@
 #!/usr/bin/env bash
 
-XPLA_DIMENSION_HOME=/data/lib/xplad/dimension_37-1
+set -x
+echo XPLA_HOME=${XPLA_HOME}
 
-xplad start --home=${XPLA_DIMENSION_HOME} --log_level=info
+xplad start --home=${XPLA_HOME} --log_level=info
+
+# @1 <= ~ <@755000 - 1.0.0 
+# @755000 <= ~ <@ - 1.1.0 
+
 # time xplad_v1.0.0 start --home=${XPLA_DIMENSION_HOME} --log_level=info --trace --x-crisis-skip-assert-invariants --halt-height=10000
 # time xplad_v1.0.0 start --home=${XPLA_DIMENSION_HOME} --log_level=info --trace --x-crisis-skip-assert-invariants --halt-height=100000
 # time tar -c -I 'lz4' -f /data/lib/xplad/xpla__archive__dimension_37-1__data__0000755000.tar.lz4 -C /data/lib/xplad/dimension_37-1/data .
