@@ -1,27 +1,47 @@
 IMAGE_NAME = xpla-node
-TAG_NAME = 20231215
-IMAGE_TAG = ${IMAGE_NAME}:${TAG_NAME}
-CONTAINER_NAME = ${IMAGE_NAME}
+IMAGE_VERSION = 1.0.0
+IMAGE_TAG = ${IMAGE_NAME}:${IMAGE_VERSION}
+CONTAINER_NAME = ${IMAGE_NAME}-local
+VOLUME = ${IMAGE_NAME}-data
+CHAIN_ID = dimension_37-1
 
 build:
-	docker build -t ${IMAGE_TAG} -f ./container.image.d/Dockerfile ./container.image.d/
+	docker build -t ${IMAGE_TAG} \
+		./container.image.d \
+		-f ./container.image.d/Dockerfile_1.0.0
 
 build-nocache:
-	# need new tag added
-	docker build -t ${IMAGE_TAG} -f ./container.image.d/Dockerfile ./container.image.d/ --no-cache
+	docker build -t ${IMAGE_TAG} \
+		./container.image.d \
+		-f ./container.image.d/Dockerfile_1.0.0 \
+		--no-cache
 
-start-container:
+init:
 	docker run \
-		--rm --detach \
+		--rm \
 		--name ${CONTAINER_NAME} \
-		--mount type=bind,source=/data/lib/xplad,target=/data/lib/xplad \
-		--mount type=bind,source=/data/app/xpla-node,target=/data/app/xplad \
+		--volume ${VOLUME}:/data/lib/xplad/${CHAIN_ID} \
+		--env XPLA_HOME=/data/lib/xplad/${CHAIN_ID} \
+		--env CHAIN_ID=${CHAIN_ID} \
+		--env MONIKER=xpla-dimension-0 \
 		${IMAGE_TAG} \
-		sleep infinity
+		./dimension-init
 
-stop-container:
-	docker stop ${CONTAINER_NAME}
+start:
+	docker run \
+		--rm -it \
+		--name ${CONTAINER_NAME} \
+		--volume ${VOLUME}:/data/lib/xplad/${CHAIN_ID} \
+		${IMAGE_TAG} \
+		./dimension-start
 
-shell-container:
-	docker exec -it ${CONTAINER_NAME} bash
+rm:
+	docker volume rm ${VOLUME}
 
+shell:
+	docker run \
+		--rm -it \
+		--name ${CONTAINER_NAME} \
+		--volume ${VOLUME}:/data/lib/xplad/${CHAIN_ID} \
+		${IMAGE_TAG} \
+		bash
