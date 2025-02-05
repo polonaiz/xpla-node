@@ -5,27 +5,12 @@ echo XPLA_HOME=${XPLA_HOME}
 
 xplad start --home=${XPLA_HOME} --log_level=info
 
-# @1 <= ~ <@755000 - 1.0.0 
-# @755000 <= ~ <@ - 1.1.0 
+#          1 ~    755,000 - 1.0.0 
+#    755,000 ~  2,459,600 - 1.1.0 
+#  2,459,600 ~            - 1.2.0 
 
-# time xplad_v1.0.0 start --home=${XPLA_DIMENSION_HOME} --log_level=info --trace --x-crisis-skip-assert-invariants --halt-height=10000
-# time xplad_v1.0.0 start --home=${XPLA_DIMENSION_HOME} --log_level=info --trace --x-crisis-skip-assert-invariants --halt-height=100000
-# time tar -c -I 'lz4' -f /data/lib/xplad/xpla__archive__dimension_37-1__data__0000755000.tar.lz4 -C /data/lib/xplad/dimension_37-1/data .
-# mkdir -p /data/lib/xplad/dimension_37-1/data; time tar -x -I 'lz4' -f /data/lib/xplad/xpla__archive__dimension_37-1__data__0000755000.tar.lz4 -C /data/lib/xplad/dimension_37-1/data
+# time tar -c -I 'lz4' -f /arch/lib/xplad/xpla__archive__dimension_37-1__data__0000755000.tar.lz4 -C /data/lib/xplad/dimension_37-1/data .
 
-# @755000 ~ @2459600
-# time xplad_v1.1.0 start --home=${XPLA_DIMENSION_HOME} --log_level=info --trace --x-crisis-skip-assert-invariants
-# time xplad_v1.1.0 start --home=${XPLA_DIMENSION_HOME} --log_level=info --trace --halt-height=1500000
-# time tar -c -I 'lz4' -f /data/lib/xplad/xpla__archive__dimension_37-1__data__0001500000.tar.lz4 -C /data/lib/xplad/dimension_37-1/data .
-# mkdir -p /data/lib/xplad/dimension_37-1/data && \
-#   time tar -x -I 'lz4' -f /data/lib/xplad/xpla__archive__dimension_37-1__data__0001500000.tar.lz4 -C /data/lib/xplad/dimension_37-1/data
-# time xplad_v1.1.0 start --home=${XPLA_DIMENSION_HOME} --log_level=info --trace
-# time tar -c -I 'lz4' -f /data/lib/xplad/xpla__archive__dimension_37-1__data__0002459599.tar.lz4 -C /data/lib/xplad/dimension_37-1/data .
+# time tar -c -I 'lz4' -f /arch/lib/xplad/xpla__archive__dimension_37-1__data__0002459599.tar.lz4 -C /data/lib/xplad/dimension_37-1/data .
+# mkdir -p /data/lib/xplad/dimension_37-1/data && time tar -x -I 'lz4' -f /arch/lib/xplad/xpla__archive__dimension_37-1__data__0000755000.tar.lz4 -C /data/lib/xplad/dimension_37-1/data
 
-# @2459600 ~
-# mkdir -p /data/lib/xplad/dimension_37-1/data && \
-#   time tar -x -I 'lz4' -f /data/lib/xplad/xpla__archive__dimension_37-1__data__0002459599.tar.lz4 -C /data/lib/xplad/dimension_37-1/data
-# time xplad_v1.2.3 start --home=/data/lib/xplad/dimension_37-1 --log_level=info --trace --halt-height=4999999
-# @4845600
-
-# time xplad_v1.6.0 start --home=/data/lib/xplad/dimension_37-1 --log_level=info --trace

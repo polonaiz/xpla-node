@@ -10,9 +10,11 @@ xplad init --chain-id=${CHAIN_ID} --home=${XPLA_HOME} ${MONIKER} && \
 wget -O ${XPLA_HOME}/config/genesis.json https://raw.githubusercontent.com/xpladev/mainnet/main/dimension_37-1/genesis.json && \
 
 ## app.toml
+## 
+## not enough pruning-keep-recent value can make suddden crash on parallel process lagging
 sed -i -e 's/minimum-gas-prices = \"\"/minimum-gas-prices = \"850000000000axpla\"/g' ${XPLA_HOME}/config/app.toml && \
 sed -i -e 's/pruning = \"default\"/pruning = \"custom\"/g' ${XPLA_HOME}/config/app.toml && \
-sed -i -e 's/pruning-keep-recent = \"0\"/pruning-keep-recent = \"100\"/g' ${XPLA_HOME}/config/app.toml && \
+sed -i -e 's/pruning-keep-recent = \"0\"/pruning-keep-recent = \"1000\"/g' ${XPLA_HOME}/config/app.toml && \
 sed -i -e 's/pruning-keep-every = \"0\"/pruning-keep-every = \"0\"/g' ${XPLA_HOME}/config/app.toml && \
 sed -i -e 's/pruning-interval = \"0\"/pruning-interval = \"10\"/g' ${XPLA_HOME}/config/app.toml && \
 sed -i -e '/\[api\]/,+3 s/enable = false/enable = true/g' ${XPLA_HOME}/config/app.toml && \
