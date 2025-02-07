@@ -25,3 +25,4 @@ sed -i -e 's/indexer = \"kv\"/indexer = \"null\"/g' ${XPLA_HOME}/config/config.t
 sed -i -e 's/seeds = \"\"/seeds = \"e7b6016ce5663a69ba71a982072315545eb0d5f6@seed.xpla.delightlabs.io:26656\"/g' ${XPLA_HOME}/config/config.toml && \
 sed -i -e 's/max_packet_msg_payload_size = 1024/max_packet_msg_payload_size = 4096/g' ${XPLA_HOME}/config/config.toml
 sed -i -e 's/recv_rate = 5120000/recv_rate = 52428800/g' ${XPLA_HOME}/config/config.toml
+sed -i -e 's/laddr = \"tcp://127.0.0.1:26657\"/laddr = \"tcp://0.0.0.0:26657\"/g' ${XPLA_HOME}/config/config.toml

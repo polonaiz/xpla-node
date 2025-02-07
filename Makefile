@@ -79,9 +79,10 @@ shell:
 		bash
 
 subscribe:
-	wscat --connect ws://localhost:26657/websocket
-	# {"jsonrpc": "2.0","method": "subscribe","id": 0,"params": {"query": "tm.event='NewBlock'"}}
-	# {"jsonrpc": "2.0","method": "subscribe","id": 0,"params": {"query": "tm.event='Tx'"}}
+	wscat \
+		--connect ws://localhost:26657/websocket \
+		--wait 600 \
+		--execute "{\"jsonrpc\": \"2.0\",\"method\": \"subscribe\",\"id\": 0,\"params\": {\"query\": \"tm.event='Tx'\"}}"
 
 volume-arch-create:
 	docker volume create \

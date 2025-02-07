@@ -1,11 +1,11 @@
 {
 	"name": "Ubuntu",
 	"build": {
-		"dockerfile": "Dockerfile",
-		"args": {
-			"VARIANT": "ubuntu-22.04"
-		}
+		"dockerfile": "Dockerfile"
 	},
+	"runArgs": [
+		"--network=host"
+	],
 	"postCreateCommand": "git config --global --add safe.directory ${containerWorkspaceFolder}; sudo chown vscode.vscode /var/run/docker.sock",
 	"remoteUser": "vscode",
 	"mounts": [
