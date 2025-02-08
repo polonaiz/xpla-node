@@ -14,6 +14,9 @@ build:
 	docker build -t ${IMAGE_NAME}:1.2.0 \
 		-f ./container.image.d/Dockerfile_1.2.0 \
 		./container.image.d
+	docker build -t ${IMAGE_NAME}:1.3.3 \
+		-f ./container.image.d/Dockerfile_1.3.3 \
+		./container.image.d
 
 init:
 	docker run \
@@ -59,6 +62,17 @@ start-1.2.0:
 		${IMAGE_NAME}:1.2.0 \
 		./start.sh
 
+start-1.3.3:
+	docker rm -f ${CONTAINER_NAME}
+	docker run \
+		--name ${CONTAINER_NAME} \
+		--volume ${VOLUME}:/data/lib/xplad/${CHAIN_ID} \
+		--env XPLA_HOME=/data/lib/xplad/${CHAIN_ID} \
+		--publish 26657:26657 \
+		--detach \
+		${IMAGE_NAME}:1.3.3 \
+		./start.sh
+
 log-follow:
 	docker logs -f ${CONTAINER_NAME}
 
@@ -75,7 +89,7 @@ shell:
 		--name ${CONTAINER_NAME} \
 		--volume ${VOLUME}:/data/lib/xplad/${CHAIN_ID} \
 		--volume ${VOLUME_ARCH}:/arch/lib/xplad \
-		${IMAGE_NAME}:1.0.0 \
+		${IMAGE_NAME}:1.3.3 \
 		bash
 
 subscribe:

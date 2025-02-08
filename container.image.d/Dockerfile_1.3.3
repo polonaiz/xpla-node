@@ -1,0 +1,27 @@
+########
+FROM golang:1.19.1 AS builder
+
+RUN git clone https://github.com/xpladev/xpla.git ~/xpla 
+
+RUN cd ~/xpla && \
+    git checkout v1.3.3 && \
+    make install
+
+########
+FROM ubuntu:22.04 AS runner
+
+RUN apt-get update && \
+    apt-get install -y tzdata && \
+    ln -fs /usr/share/zoneinfo/Asia/Seoul /etc/localtime && \
+    dpkg-reconfigure --frontend noninteractive tzdata
+
+RUN apt-get update && \
+    apt-get install -y vim bash-completion wget sysstat dstat net-tools curl tmux jq dnsutils liblz4-tool pv git
+
+COPY --from=builder /go/bin/xplad /usr/local/bin/
+COPY --from=builder /go/pkg/mod/github.com/!cosm!wasm/wasmvm@v1.3.1/internal/api/libwasmvm.x86_64.so /usr/local/lib/
+COPY --from=builder /go/pkg/mod/github.com/!cosm!wasm/wasmvm@v1.3.1/internal/api/libwasmvm.aarch64.so /usr/local/lib/
+COPY ./src/*.sh /root
+
+RUN ldconfig
+WORKDIR /root
