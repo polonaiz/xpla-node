@@ -12,6 +12,6 @@ xplad start --home=${XPLA_HOME} --log_level=info
 # time tar -c -I 'lz4' -f /arch/lib/xplad/xpla__archive__dimension_37-1__data__0000755000.tar.lz4 -C /data/lib/xplad/dimension_37-1/data .
 # time tar -c -I 'lz4' -f /arch/lib/xplad/xpla__archive__dimension_37-1__data__0002459599.tar.lz4 -C /data/lib/xplad/dimension_37-1/data .
 # time tar -c -I 'lz4' -f /arch/lib/xplad/xpla__archive__dimension_37-1__data__0006881850.tar.lz4 -C /data/lib/xplad/dimension_37-1/data .
-
+# time tar -c -I 'lz4' -f /arch/lib/xplad/xpla__archive__dimension_37-1__data__0008373900.tar.lz4 -C /data/lib/xplad/dimension_37-1/data .
 # mkdir -p /data/lib/xplad/dimension_37-1/data && time tar -x -I 'lz4' -f /arch/lib/xplad/xpla__archive__dimension_37-1__data__0000755000.tar.lz4 -C /data/lib/xplad/dimension_37-1/data
 
