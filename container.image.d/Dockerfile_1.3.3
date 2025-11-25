@@ -21,7 +21,7 @@ RUN apt-get update && \
 COPY --from=builder /go/bin/xplad /usr/local/bin/
 COPY --from=builder /go/pkg/mod/github.com/!cosm!wasm/wasmvm@v1.3.1/internal/api/libwasmvm.x86_64.so /usr/local/lib/
 COPY --from=builder /go/pkg/mod/github.com/!cosm!wasm/wasmvm@v1.3.1/internal/api/libwasmvm.aarch64.so /usr/local/lib/
-COPY ./src/*.sh /root
+COPY ./src/*.sh /root/
 
 RUN ldconfig
 WORKDIR /root

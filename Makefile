@@ -119,3 +119,11 @@ volume-arch-create:
 		-o type=none \
 		-o device=/Users/polonaiz/workspaces/xpla-node-arch \
 		xpla-node-arch
+
+volume-data-create:
+	docker volume create \
+		--driver local \
+		--opt type=none \
+		--opt device=/data/lib/xplad \
+		--opt o=bind \
+		xplad-data
