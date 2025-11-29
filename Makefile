@@ -43,6 +43,13 @@ start-1.0.0:
 		${IMAGE_NAME}:1.0.0 \
 		./start.sh
 
+# 6:16AM ERR UPGRADE "XplaReward" NEEDED at height: 755000: {"fee_pool_rate": "0.2","community_
+# pool_rate": "0.79","reserve_rate": "0.01","reserve_account": "xpla10ksn9528f82uwnmz3sgr4n42l0
+# nucmzntjrg00","reward_distribute_account": "xpla19dacf8gzsvuj9txzw0wmtfpdg8swpd4jxl3ks2"}
+# panic: UPGRADE "XplaReward" NEEDED at height: 755000: {"fee_pool_rate": "0.2","community_pool
+# _rate": "0.79","reserve_rate": "0.01","reserve_account": "xpla10ksn9528f82uwnmz3sgr4n42l0nucm
+# zntjrg00","reward_distribute_account": "xpla19dacf8gzsvuj9txzw0wmtfpdg8swpd4jxl3ks2"}		
+
 start-1.1.0:
 	docker rm -f ${CONTAINER_NAME}
 	docker run \
@@ -91,7 +98,7 @@ log-follow:
 	docker logs -f ${CONTAINER_NAME}
 
 log-tail:
-	watch --color -n2 docker logs xpla-node-local -n30
+	watch --color -n1 docker logs xpla-node-local -n30
 
 # rm:
 # 	docker rm -f ${CONTAINER_NAME}
@@ -127,3 +134,5 @@ volume-data-create:
 		--opt device=/data/lib/xplad \
 		--opt o=bind \
 		xplad-data
+
+# tar -zcvf /arch/lib/xplad__dimension_37-1__data__0-755000__1.0.0.tar.gz -C /data/lib/xplad/dimension_37-1 data
